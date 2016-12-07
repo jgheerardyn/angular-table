@@ -194,8 +194,8 @@
     TableConfiguration.prototype.collectHeaderMarkup = function(table) {
       var customHeaderMarkups, th, tr, _i, _len, _ref;
       customHeaderMarkups = {};
-      tr = table.find("tr");
-      _ref = tr.find("th");
+      tr = table.children("thead").children("tr");
+      _ref = tr.children("th");
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         th = _ref[_i];
         th = angular.element(th);
@@ -210,7 +210,7 @@
     TableConfiguration.prototype.collectBodyMarkup = function(table) {
       var attribute, bodyDefinition, initialSorting, sortable, td, title, width, _i, _len, _ref;
       bodyDefinition = [];
-      _ref = table.find("td");
+      _ref = table.children("tbody").children("tr").children("td");
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         td = _ref[_i];
         td = angular.element(td);
@@ -250,8 +250,8 @@
 
     Setup.prototype.setupTr = function(element, repeatString) {
       var tbody, tr;
-      tbody = element.find("tbody");
-      tr = tbody.find("tr");
+      tbody = element.children("tbody");
+      tr = tbody.children("tr");
       tr.attr("ng-repeat", repeatString);
       return tbody;
     };
@@ -289,7 +289,7 @@
     PaginatedSetup.prototype.compile = function(element) {
       var fillerTr, tbody, td, tdString, tds, _i, _len;
       tbody = this.setupTr(element, this.repeatString);
-      tds = element.find("td");
+      tds = element.children("td");
       tdString = "";
       for (_i = 0, _len = tds.length; _i < _len; _i++) {
         td = tds[_i];
@@ -402,10 +402,10 @@
 
     Table.prototype.setupHeader = function() {
       var header, thead, tr;
-      thead = this.element.find("thead");
+      thead = this.element.children("thead");
       if (thead) {
         header = this.constructHeader();
-        tr = angular.element(thead).find("tr");
+        tr = angular.element(thead).children("tr");
         tr.remove();
         return thead.append(header);
       }

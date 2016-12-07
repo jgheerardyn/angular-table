@@ -8,10 +8,10 @@ class Table
     return tr
 
   setupHeader: () ->
-    thead = @element.find("thead")
+    thead = @element.children("thead")
     if thead
       header = @constructHeader()
-      tr = angular.element(thead).find("tr")
+      tr = angular.element(thead).children("tr")
       tr.remove()
       thead.append(header)
 

@@ -27,8 +27,8 @@ class TableConfiguration
   collectHeaderMarkup: (table) ->
     customHeaderMarkups = {}
 
-    tr = table.find("tr")
-    for th in tr.find("th")
+    tr = table.children("thead").children("tr")
+    for th in tr.children("th")
       th = angular.element(th)
       customHeaderMarkups[th.attr("at-attribute")] = {
         customContent: th.html(), attributes: th[0].attributes
@@ -39,7 +39,7 @@ class TableConfiguration
   collectBodyMarkup: (table) ->
     bodyDefinition = []
 
-    for td in table.find("td")
+    for td in table.children("tbody").children("tr").children("td")
       td = angular.element(td)
 
       attribute = td.attr("at-attribute")

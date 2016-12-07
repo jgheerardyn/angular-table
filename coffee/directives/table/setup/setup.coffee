@@ -1,6 +1,6 @@
 class Setup
   setupTr: (element, repeatString) ->
-    tbody = element.find "tbody"
-    tr = tbody.find "tr"
+    tbody = element.children "tbody"
+    tr = tbody.children "tr"
     tr.attr("ng-repeat", repeatString)
     tbody

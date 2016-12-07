@@ -5,7 +5,7 @@ class PaginatedSetup extends Setup
   compile: (element) ->
     tbody = @setupTr(element, @repeatString)
 
-    tds = element.find("td")
+    tds = element.children("td")
     tdString = ""
     for td in tds
       tdString += "<td><span>&nbsp;</span></td>"
